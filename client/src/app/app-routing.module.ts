@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'chat-list', component: ChatListComponent }, 
+  // { path: `chat-list?name=${name}`, component: ChatListComponent},
   {path: 'chat/:senderId/:receiverId/:receiverName', component: ChatComponent}
 ];
 

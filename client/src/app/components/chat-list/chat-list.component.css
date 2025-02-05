@@ -70,9 +70,10 @@
 }
 
 /* Logout Button */
-button {
-  width: 100%;
-  margin-top: 20px;
+.logout {
+  width: 30%;
+  display: block; 
+  margin: 20px auto; 
   padding: 10px;
   border: none;
   background: #ff4d4d;
@@ -84,10 +85,35 @@ button {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
+.logout:hover {
   background: #cc0000;
   transform: scale(1.05);
 }
+
+.searchSpace{
+  width: 70%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 20px;
+}
+.searchButton{
+  width: 20%;
+  margin-left: 20px;
+  background-color:rgb(134, 193, 45);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+ 
+.searchButton:hover{
+  transform: scale(1.05);
+  background: #007bff;
+}
+
 
 /* Responsive */
 @media (max-width: 500px) {

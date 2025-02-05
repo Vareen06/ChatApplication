@@ -1,17 +1,48 @@
 <div class="chat-list">
   <h2>People</h2>
-  <div *ngFor="let user of users" class="chat-item">
-    <a [routerLink]="['/chat', senderId, user._id, user.name]">
-      <div class="chat-avatar">
-        <span>{{ user.name ? user.name.charAt(0).toUpperCase() : 'N/A' }}</span>
-      </div>
-      <div class="chat-details">
-        <p>{{ user.name || 'No Name' }}</p>
-      </div>
-    </a>
+  <div>
+    <input
+      type="text"
+      placeholder="Search"
+      [(ngModel)]="searchName"
+      class="searchSpace"
+    />
+    <button (click)="onSearch(searchName)" class="searchButton">Search</button>
+  </div>
+  <div *ngIf="isName">
+    <div class="chat-item">
+      <a
+        [routerLink]="['/chat', senderId, searchedUser._id, searchedUser.name]"
+      >
+        <div class="chat-avatar">
+          <span>{{
+            searchedUser?.name
+              ? searchedUser.name.charAt(0).toUpperCase()
+              : "N/A"
+          }}</span>
+        </div>
+        <div class="chat-details">
+          <p>{{ searchedUser?.name || "No Name" }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div *ngIf="!isName">
+    <div *ngFor="let user of users | filter:searchName" class="chat-item">
+      <a [routerLink]="['/chat', senderId, user._id, user.name]">
+        <div class="chat-avatar">
+          <span>{{
+            user.name ? user.name.charAt(0).toUpperCase() : "N/A"
+          }}</span>
+        </div>
+        <div class="chat-details">
+          <p>{{ user.name || "No Name" }}</p>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 
 <div>
-  <button (click)="logOut()">Logout</button>
+  <button (click)="logOut()" class="logout">Logout</button>
 </div>

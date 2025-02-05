@@ -22,6 +22,22 @@ const  getUserbyId = async(req,res) =>{
   }
 }
 
+const getUserbyName = async(req,res) =>{
+  try{
+    const {name} = req.query;
+
+    if(!name) return res.status(400).json({msg:'User dont exist'})
+
+    const user = await User.find({name: new RegExp(name,"i")})
+    // console.log(user)
+    if(user.length === 0) return res.status(404).json({msg:'User Not Found'})
+
+    res.status(200).json(user)
+  }catch(err){
+    res.status(500).json({msg:`Something went wrong`,err})
+  }
+}
+
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -58,4 +74,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getUsers, getUserbyId };
+module.exports = { register, login, getUsers, getUserbyId, getUserbyName };

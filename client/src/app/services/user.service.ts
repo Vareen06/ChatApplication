@@ -11,7 +11,6 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  // Get all users (already in your service)
   getUsers(): Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}/users`).pipe(
       catchError((error) => {
@@ -21,7 +20,10 @@ export class UserService {
     );
   }
 
-  // Register a new user
+  getUserbyName(name: string): Observable<any>{
+    return this.http.get<any[]>(`${this.apiUrl}/getUser?name=${name}`)
+  }
+
   register(name: string, email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/register`, { name, email, password }).pipe(
       catchError((error) => {
@@ -31,7 +33,6 @@ export class UserService {
     );
   }
 
-  // Login an existing user
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).pipe(
       catchError((error) => {

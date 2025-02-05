@@ -137,4 +137,8 @@ export class ChatComponent implements OnInit {
     );
   }
   
+  replyMessage(text:string, _id: string){
+    this.messageText= text,
+    this.editingMessageId = _id
+  }
 }

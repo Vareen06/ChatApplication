@@ -8,6 +8,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RegisterComponent } from './components/register/register.component';
     ChatComponent,
     ChatListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
