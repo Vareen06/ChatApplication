@@ -1,0 +1,17 @@
+<div class="chat-list">
+  <h2>People</h2>
+  <div *ngFor="let user of users" class="chat-item">
+    <a [routerLink]="['/chat', senderId, user._id, user.name]">
+      <div class="chat-avatar">
+        <span>{{ user.name ? user.name.charAt(0).toUpperCase() : 'N/A' }}</span>
+      </div>
+      <div class="chat-details">
+        <p>{{ user.name || 'No Name' }}</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div>
+  <button (click)="logOut()">Logout</button>
+</div>

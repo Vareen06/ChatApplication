@@ -1,0 +1,27 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <h3>{{ receiverName }}</h3>
+  </div>
+
+  <div class="messages">
+    <div *ngFor="let message of messages" class="message">
+      <div *ngIf="message.senderId === senderId" class="message-sender">
+        <span>{{ message.messageText }}</span>
+        <button (click)="editMessage(message._id, message.messageText)">Edit</button>
+        <button (click)="deleteMessage(message._id)">Delete</button>
+      </div>
+
+      <div *ngIf="message.senderId !== senderId" class="message-receiver">
+        <span>{{ message.messageText }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="message-input">
+    <input type="text" [(ngModel)]="messageText" placeholder="Type a message..." />
+    <button *ngIf="editingMessageId; else sendButton" (click)="updateEditedMessage()">Update</button>
+    <ng-template #sendButton>
+      <button (click)="sendMessage()">Send</button>
+    </ng-template>
+  </div>
+</div>
